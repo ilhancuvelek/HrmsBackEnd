@@ -1,10 +1,13 @@
 package JavaKamp.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -36,7 +39,8 @@ public class Employer extends User{
 	@Column(name="admin_verify")
 	private boolean adminVerify;
 	
-	
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdvert> jobAdverts;
 	
 	public Employer() {
 		super();

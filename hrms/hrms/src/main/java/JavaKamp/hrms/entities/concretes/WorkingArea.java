@@ -1,10 +1,13 @@
 package JavaKamp.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +21,9 @@ public class WorkingArea {
 	
 	@Column(name="workingarea_name")
 	private String workingareaName;
+	
+	@OneToMany(mappedBy = "workingArea")
+	private List<JobAdvert> jobAdverts; 
 
 	
 	public WorkingArea() {
