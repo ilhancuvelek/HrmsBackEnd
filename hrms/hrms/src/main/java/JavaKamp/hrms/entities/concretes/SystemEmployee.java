@@ -2,24 +2,18 @@ package JavaKamp.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
+
 @Entity
 @Table(name="system_employees")
-@PrimaryKeyJoinColumn(name="systememployee_id")
+@EqualsAndHashCode(callSuper=false) 
+@PrimaryKeyJoinColumn(name="user_id")
 public class SystemEmployee extends User{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="systememployee_id")
-	private int id;
-	
-	@Column(name="user_id")
-	private int userId;
+
 	
 	@Column(name="workingarea_id")
 	private String workingareaId;
@@ -36,30 +30,15 @@ public class SystemEmployee extends User{
 		super();
 	}
 
-	public SystemEmployee(int id, int userId, String firstName, String lastName,String workingareaId) {
+	public SystemEmployee(int id, String firstName, String lastName,String workingareaId) {
 		super();
-		this.id = id;
-		this.userId = userId;
+
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.workingareaId=workingareaId;
 	}
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
 
 	public String getFirstName() {
 		return firstName;

@@ -14,5 +14,7 @@ public interface JobAdvertDao extends JpaRepository<JobAdvert, Integer> {
 	
 	@Query("From JobAdvert where isOpen=true Order By deadline Asc")
 	List<JobAdvert> getAllByOpenAndDeadlineJobAdvert();
+	
+	List<JobAdvert>  getByCity_CityId(int cityId);
 
 }

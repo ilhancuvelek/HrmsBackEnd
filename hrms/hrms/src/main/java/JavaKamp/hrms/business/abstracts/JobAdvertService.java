@@ -14,5 +14,9 @@ public interface JobAdvertService {
 	DataResult<List<JobAdvert>>  getAllActiveJobAdvert();
 	DataResult<List<JobAdvert>> getAllByOpenAndDeadlineJobAdvert();
 	DataResult<List<JobAdvert>> getAll();
+	
+	DataResult<List<JobAdvert>> getByCity(int cityId);
+	
+	
 
 }

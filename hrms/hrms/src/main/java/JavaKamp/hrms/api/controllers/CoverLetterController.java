@@ -9,28 +9,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import JavaKamp.hrms.business.abstracts.SystemEmployeeService;
+import JavaKamp.hrms.business.abstracts.CoverLetterService;
 import JavaKamp.hrms.core.utilities.results.DataResult;
 import JavaKamp.hrms.core.utilities.results.Result;
-import JavaKamp.hrms.entities.concretes.SystemEmployee;
+import JavaKamp.hrms.entities.concretes.CoverLetter;
+
 @RestController
-@RequestMapping("/api/systememployees")
-public class SystemEmployeesController {
+@RequestMapping("/api/coverletters")
+public class CoverLetterController {
 	
-	private SystemEmployeeService systemEmployeeService;
+	private CoverLetterService coverLetterService;
+	
 	@Autowired
-	public SystemEmployeesController(SystemEmployeeService systemEmployeeService) {
+	public CoverLetterController(CoverLetterService coverLetterService) {
 		super();
-		this.systemEmployeeService = systemEmployeeService;
-	}
-	@GetMapping("/getall")
-	public DataResult<List<SystemEmployee>> getAll(){
-		return systemEmployeeService.getAll();
+		this.coverLetterService = coverLetterService;
 	}
 	
+	@GetMapping("/getall")
+	public DataResult<List<CoverLetter>> getAll(){
+		return this.coverLetterService.getall();
+	}
 	@PostMapping("/add")
-	public Result add(@RequestBody SystemEmployee employee){
-		return this.systemEmployeeService.add(employee);
+	public Result add(@RequestBody CoverLetter coverLetter) {
+		return this.coverLetterService.add(coverLetter);
 	}
 
 }

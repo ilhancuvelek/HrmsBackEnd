@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 
 
-
 @Entity
 @Table(name="users")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -31,6 +30,8 @@ public class User {
 	@Column(name="password_repeat")
 	private String passwordRepeat;
 	
+
+	
 	public User() {
 		super();
 	}
@@ -40,6 +41,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.passwordRepeat=passwordRepeat;
+
 	}
 	
 	
@@ -55,6 +57,8 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+
 	public String getPassword() {
 		return password;
 	}

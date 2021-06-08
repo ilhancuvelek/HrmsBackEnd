@@ -9,28 +9,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import JavaKamp.hrms.business.abstracts.SystemEmployeeService;
+import JavaKamp.hrms.business.abstracts.LanguageService;
 import JavaKamp.hrms.core.utilities.results.DataResult;
 import JavaKamp.hrms.core.utilities.results.Result;
-import JavaKamp.hrms.entities.concretes.SystemEmployee;
+import JavaKamp.hrms.entities.concretes.Language;
+
 @RestController
-@RequestMapping("/api/systememployees")
-public class SystemEmployeesController {
+@RequestMapping("/api/languages")
+public class LanguageController {
 	
-	private SystemEmployeeService systemEmployeeService;
+	private LanguageService languageService;
+	
 	@Autowired
-	public SystemEmployeesController(SystemEmployeeService systemEmployeeService) {
+	public LanguageController(LanguageService languageService) {
 		super();
-		this.systemEmployeeService = systemEmployeeService;
+		this.languageService = languageService;
 	}
+	
+	
 	@GetMapping("/getall")
-	public DataResult<List<SystemEmployee>> getAll(){
-		return systemEmployeeService.getAll();
+	public DataResult<List<Language>> getAll(){
+		return this.languageService.getall();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody SystemEmployee employee){
-		return this.systemEmployeeService.add(employee);
+	public Result add(@RequestBody Language language) {
+		return this.languageService.add(language);
 	}
-
 }

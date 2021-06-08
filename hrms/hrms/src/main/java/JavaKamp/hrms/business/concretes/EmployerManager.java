@@ -37,15 +37,15 @@ public class EmployerManager implements EmployerService{
 	@Override
 	public Result add(Employer employer) {
 		
-		if(findByEmail(employer.getEmail()).getData() != null){
-	         return new ErrorResult("Aynı email zaten var.");
-	    }else if(employer.getPassword()!=employer.getPasswordRepeat()) {
-	    	return new ErrorResult("şifre uyuşmuyor");
-	    }
+		if(!this.checkIfEmailExists(employer.getEmail())) {
+			return new ErrorResult("Email already exist!");
+		}
+		if(!this.employerValidation(employer)) {
+			return new ErrorResult("Missing information!");
+		}
+		
 		this.employerDao.save(employer);
-		return new SuccessResult("İş veren eklendi");
-		
-		
+		return new SuccessResult("Employer added !");
 		
 	}
 
@@ -54,6 +54,23 @@ public class EmployerManager implements EmployerService{
 	public DataResult<Employer> findByEmail(String email) {
 		
 		return new SuccessDataResult<Employer>(this.employerDao.findByEmail(email));
+	}
+	
+	private boolean employerValidation(Employer employer) {
+		
+		if(employer.getCompanyName() == null && employer.getWebsiteName()== null && employer.getEmail()== null
+				&& employer.getPhoneNumber() == null && employer.getPassword() == null) {
+			return false;
+					
+		}
+		return true;
+	}
+	private boolean checkIfEmailExists(String email) {
+		if(this.employerDao.findByEmail(email) !=null) {
+			return false;
+		}
+		return true;
+		
 	}
 
 	

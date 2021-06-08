@@ -50,4 +50,9 @@ public class JobAdvertManager implements JobAdvertService{
 		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvetDao.findAll(),"job advert listelendi");
 	}
 
+	@Override
+	public DataResult<List<JobAdvert>> getByCity(int cityId) {
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvetDao.getByCity_CityId(cityId));
+	}
+
 }

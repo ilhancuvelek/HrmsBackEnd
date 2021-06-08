@@ -4,25 +4,22 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.EqualsAndHashCode;
+
 @Entity
 @Table(name="employers")
-@PrimaryKeyJoinColumn(name="employer_id")
+@PrimaryKeyJoinColumn(name="user_id")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","job_adverts"})
+@EqualsAndHashCode(callSuper=false) 
 public class Employer extends User{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="employer_id")
-	private int id;
-	
-	@Column(name="user_id")
-	private int userId;
 	
 	@Column(name="company_name")
 	private String companyName;
@@ -46,11 +43,10 @@ public class Employer extends User{
 		super();
 	}
 
-	public Employer(int id, int userId, String companyName, String websiteName, String phoneNumber, boolean emailVerify,
+	public Employer( String companyName, String websiteName, String phoneNumber, boolean emailVerify,
 			boolean adminVerify) {
 		super();
-		this.id = id;
-		this.userId = userId;
+
 		this.companyName = companyName;
 		this.websiteName = websiteName;
 		this.phoneNumber = phoneNumber;
@@ -60,21 +56,7 @@ public class Employer extends User{
 		
 	}
 	
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
 
 	public String getCompanyName() {
 		return companyName;

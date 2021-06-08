@@ -9,28 +9,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import JavaKamp.hrms.business.abstracts.SystemEmployeeService;
+import JavaKamp.hrms.business.abstracts.SocialMediaService;
 import JavaKamp.hrms.core.utilities.results.DataResult;
 import JavaKamp.hrms.core.utilities.results.Result;
-import JavaKamp.hrms.entities.concretes.SystemEmployee;
+import JavaKamp.hrms.entities.concretes.SocialMedia;
+
 @RestController
-@RequestMapping("/api/systememployees")
-public class SystemEmployeesController {
+@RequestMapping("/api/socialmedias")
+public class SocialMediaController {
 	
-	private SystemEmployeeService systemEmployeeService;
+	private SocialMediaService service;
 	@Autowired
-	public SystemEmployeesController(SystemEmployeeService systemEmployeeService) {
+	public SocialMediaController(SocialMediaService service) {
 		super();
-		this.systemEmployeeService = systemEmployeeService;
-	}
-	@GetMapping("/getall")
-	public DataResult<List<SystemEmployee>> getAll(){
-		return systemEmployeeService.getAll();
+		this.service = service;
 	}
 	
-	@PostMapping("/add")
-	public Result add(@RequestBody SystemEmployee employee){
-		return this.systemEmployeeService.add(employee);
+	@GetMapping("/getall")
+	public DataResult<List<SocialMedia>> getall(){
+		return this.service.getall();
+		
 	}
 
+	@PostMapping("/add")
+	public Result add(@RequestBody SocialMedia socialMedia) {
+		return this.service.add(socialMedia);
+	}
 }
