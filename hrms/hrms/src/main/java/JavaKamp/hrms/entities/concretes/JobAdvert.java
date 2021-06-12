@@ -23,19 +23,22 @@ public class JobAdvert {
 	private int jodAdvertId;
 	
 	@Column(name="workingarea_id",insertable = false,updatable = false)
+	@JsonIgnore
 	private int workingareaId;
 	
 	@Column(name="description")
 	private String description;
 	
 	@Column(name="city_id",insertable = false,updatable = false)
+	@JsonIgnore
 	private int cityId;
 	
 	@Column(name="employer_id",insertable = false,updatable = false)
+	@JsonIgnore
 	private int employerId;
 	
 	@Column(name="open_position_count")
-	private int openPositionId;
+	private int openPositionCount;
 	
 	@Column(name="is_active")
 	@JsonIgnore
@@ -68,17 +71,17 @@ public class JobAdvert {
 	
 	@ManyToOne()
 	@JoinColumn(name = "city_id")
-	@JsonIgnore
+	
 	private City city;
 	
 	@ManyToOne
 	@JoinColumn(name = "employer_id")
-	@JsonIgnore
+	
 	private Employer employer;
 	
 	@ManyToOne
 	@JoinColumn(name = "workingarea_id")
-	@JsonIgnore
+	
 	private WorkingArea workingArea;
 	
 	
@@ -88,13 +91,8 @@ public class JobAdvert {
 	}
 
 
-
-	
-
-
-
 	public JobAdvert(int jodAdvertId, int workingareaId, String description, int cityId, int employerId,
-			int openPositionId, boolean isActive, int minSalary, int maxSalary, LocalDate deadline, boolean isOpen,
+			int openPositionCount, boolean isActive, int minSalary, int maxSalary, LocalDate deadline, boolean isOpen,
 			LocalDate publishedDate, boolean isDeleted, City city, Employer employer, WorkingArea workingArea) {
 		super();
 		this.jodAdvertId = jodAdvertId;
@@ -102,7 +100,7 @@ public class JobAdvert {
 		this.description = description;
 		this.cityId = cityId;
 		this.employerId = employerId;
-		this.openPositionId = openPositionId;
+		this.openPositionCount = openPositionCount;
 		this.isActive = isActive;
 		this.minSalary = minSalary;
 		this.maxSalary = maxSalary;
@@ -116,29 +114,14 @@ public class JobAdvert {
 	}
 
 
-
-
-
-
-
 	public int getJodAdvertId() {
 		return jodAdvertId;
 	}
 
 
-
-
-
-
-
 	public void setJodAdvertId(int jodAdvertId) {
 		this.jodAdvertId = jodAdvertId;
 	}
-
-
-
-
-
 
 
 	public int getWorkingareaId() {
@@ -147,16 +130,9 @@ public class JobAdvert {
 
 
 
-
-
-
-
 	public void setWorkingareaId(int workingareaId) {
 		this.workingareaId = workingareaId;
 	}
-
-
-
 
 
 
@@ -168,15 +144,9 @@ public class JobAdvert {
 
 
 
-
-
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-
-
 
 
 
@@ -187,16 +157,9 @@ public class JobAdvert {
 
 
 
-
-
-
-
 	public void setCityId(int cityId) {
 		this.cityId = cityId;
 	}
-
-
-
 
 
 
@@ -207,10 +170,6 @@ public class JobAdvert {
 
 
 
-
-
-
-
 	public void setEmployerId(int employerId) {
 		this.employerId = employerId;
 	}
@@ -218,36 +177,20 @@ public class JobAdvert {
 
 
 
-
-
-
-	public int getOpenPositionId() {
-		return openPositionId;
+	public int getOpenPositionCount() {
+		return openPositionCount;
 	}
 
 
 
-
-
-
-
-	public void setOpenPositionId(int openPositionId) {
-		this.openPositionId = openPositionId;
+	public void setOpenPositionCount(int openPositionCount) {
+		this.openPositionCount = openPositionCount;
 	}
-
-
-
-
-
 
 
 	public boolean isActive() {
 		return isActive;
 	}
-
-
-
-
 
 
 
@@ -257,17 +200,9 @@ public class JobAdvert {
 
 
 
-
-
-
-
 	public int getMinSalary() {
 		return minSalary;
 	}
-
-
-
-
 
 
 
@@ -275,19 +210,9 @@ public class JobAdvert {
 		this.minSalary = minSalary;
 	}
 
-
-
-
-
-
-
 	public int getMaxSalary() {
 		return maxSalary;
 	}
-
-
-
-
 
 
 
@@ -297,17 +222,9 @@ public class JobAdvert {
 
 
 
-
-
-
-
 	public LocalDate getDeadline() {
 		return deadline;
 	}
-
-
-
-
 
 
 
@@ -316,18 +233,9 @@ public class JobAdvert {
 	}
 
 
-
-
-
-
-
 	public boolean isOpen() {
 		return isOpen;
 	}
-
-
-
-
 
 
 
@@ -336,17 +244,9 @@ public class JobAdvert {
 	}
 
 
-
-
-
-
-
 	public LocalDate getPublishedDate() {
 		return publishedDate;
 	}
-
-
-
 
 
 
@@ -358,16 +258,9 @@ public class JobAdvert {
 
 
 
-
-
-
 	public boolean isDeleted() {
 		return isDeleted;
 	}
-
-
-
-
 
 
 
@@ -377,26 +270,14 @@ public class JobAdvert {
 
 
 
-
-
-
-
 	public City getCity() {
 		return city;
 	}
 
 
-
-
-
-
-
 	public void setCity(City city) {
 		this.city = city;
 	}
-
-
-
 
 
 
@@ -407,18 +288,9 @@ public class JobAdvert {
 
 
 
-
-
-
-
 	public void setEmployer(Employer employer) {
 		this.employer = employer;
 	}
-
-
-
-
-
 
 
 	public WorkingArea getWorkingArea() {
@@ -428,21 +300,9 @@ public class JobAdvert {
 
 
 
-
-
-
 	public void setWorkingArea(WorkingArea workingArea) {
 		this.workingArea = workingArea;
 	}
 
-
-
-
-
-
-
-	
-	
-	
 
 }
